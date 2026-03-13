@@ -1,14 +1,10 @@
 from fastapi import FastAPI
 from typing import Literal
-from .db import get_db
+from src.events.router import router as events_router
 
 app = FastAPI()
 
-# app.include_router(
-#     prefix="/api/v1",
-#     router=None,  # Placeholder for actual router
-#     tags=["API v1"]
-# )
+app.include_router(events_router)
 
 
 @app.get("/",

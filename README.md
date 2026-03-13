@@ -58,7 +58,7 @@ For a detailed architecture diagram, visit: [Artfolio Analytics System Design](h
 3. **Run the development server:**
     ```bash
     export DEBUG=True
-    python manage.py runserver
+    uvicorn src.main:app --reload
     ```
 
 # Production Setup

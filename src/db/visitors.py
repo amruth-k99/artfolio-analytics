@@ -4,6 +4,7 @@ from .base import Base
 from sqlalchemy import String, DateTime, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 import datetime
+from pydantic import BaseModel
 
 
 class Visitors(Base):
@@ -22,3 +23,25 @@ class Visitors(Base):
         DateTime, index=True, nullable=True)
     user_type: Mapped[Literal["guest", "user", "admin"]
                       ] = mapped_column(nullable=False)
+
+
+class VisitorModel(BaseModel):
+    visitor_type: Literal["new", "returning"]
+    user_id: str | None
+    session_id: str
+    signup_date: datetime.datetime | None
+    account_status: Literal["active", "inactive", "deleted"]
+    portfolio_created_at: datetime.datetime | None
+    user_type: Literal["guest", "user", "admin"]
+
+
+class VisitorCreate(VisitorModel):
+    pass
+
+
+class VisitorUpdate(VisitorModel):
+    pass
+
+
+class VisitorDelete(VisitorModel):
+    id: str

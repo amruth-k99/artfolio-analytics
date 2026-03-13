@@ -1,6 +1,7 @@
-from .base import Base
+from ..db.base import Base
 from sqlalchemy import ForeignKey, DateTime, Integer
 from sqlalchemy.orm import Mapped, mapped_column
+from pydantic import BaseModel
 import datetime
 
 
@@ -19,4 +20,16 @@ class Events(Base):
     referral_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("d_referral_sources.id"), nullable=False)
     datetime: Mapped[datetime.datetime] = mapped_column(
-        DateTime, nullable=True)
+        DateTime, nullable=False)
+    page_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("d_pages.id"), nullable=False)
+
+
+class EventModel(BaseModel):
+    date_id: int
+    device_type_id: int
+    visitor_id: int
+    location_id: int
+    referral_id: int
+    datetime: datetime.datetime
+    page_id: int

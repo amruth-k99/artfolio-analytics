@@ -5,7 +5,7 @@ from .device_types import DeviceTypes
 from .visitors import Visitors
 from .locations import Locations
 from .referrals import ReferralSources
-from .events import Events
+from ..events.model import Events
 
 
 Base.metadata.create_all(bind=engine)
