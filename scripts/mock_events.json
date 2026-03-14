@@ -1,0 +1,1180 @@
+[
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-10T09:15:00.000",
+    "ip_address": "198.51.100.42",
+    "visitor": {
+      "device_id": "d-maria-chrome-laptop",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.com/search?q=habiba+qawi+art+portfolio",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-10T09:16:30.000",
+    "ip_address": "198.51.100.42",
+    "visitor": {
+      "device_id": "d-maria-chrome-laptop",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.com/search?q=habiba+qawi+art+portfolio",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-10T09:18:00.000",
+    "ip_address": "198.51.100.42",
+    "visitor": {
+      "device_id": "d-maria-chrome-laptop",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.com/search?q=habiba+qawi+art+portfolio",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-11T14:22:00.000",
+    "ip_address": "198.51.100.42",
+    "visitor": {
+      "device_id": "d-maria-chrome-laptop",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-11T14:25:00.000",
+    "ip_address": "198.51.100.42",
+    "visitor": {
+      "device_id": "d-maria-chrome-laptop",
+      "user_id": "maria.garcia@outlook.com",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-12T08:05:00.000",
+    "ip_address": "203.0.113.55",
+    "visitor": {
+      "device_id": "d-maria-iphone-safari",
+      "user_id": "maria.garcia@outlook.com",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "iOS",
+      "browser": "Safari",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-12T08:06:15.000",
+    "ip_address": "203.0.113.55",
+    "visitor": {
+      "device_id": "d-maria-iphone-safari",
+      "user_id": "maria.garcia@outlook.com",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "iOS",
+      "browser": "Safari",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-18T20:10:00.000",
+    "ip_address": "198.51.100.42",
+    "visitor": {
+      "device_id": "d-maria-chrome-laptop",
+      "user_id": "maria.garcia@outlook.com",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-10T11:30:00.000",
+    "ip_address": "72.134.201.88",
+    "visitor": {
+      "device_id": "d-guest-b-firefox",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "bing",
+      "referrer_url": "https://www.bing.com/search?q=alex+chen+designer",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-10T11:32:00.000",
+    "ip_address": "72.134.201.88",
+    "visitor": {
+      "device_id": "d-guest-b-firefox",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "JohnDoe",
+      "url": "https://www.artfolio.tech/JohnDoe",
+      "full_path": "/JohnDoe"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-10T11:35:00.000",
+    "ip_address": "72.134.201.88",
+    "visitor": {
+      "device_id": "d-guest-b-firefox",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-11T19:00:00.000",
+    "ip_address": "103.45.67.89",
+    "visitor": {
+      "device_id": "d-insta-user-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "iOS",
+      "browser": "Safari",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "instagram",
+      "referrer_url": "https://l.instagram.com/?u=https://www.artfolio.tech/AlexChen",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-11T19:02:00.000",
+    "ip_address": "110.22.33.44",
+    "visitor": {
+      "device_id": "d-insta-user-2",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Android",
+      "browser": "Chrome",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "instagram",
+      "referrer_url": "https://l.instagram.com/?u=https://www.artfolio.tech/AlexChen",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-11T19:05:00.000",
+    "ip_address": "115.55.66.77",
+    "visitor": {
+      "device_id": "d-insta-user-3",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "iOS",
+      "browser": "Safari",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "instagram",
+      "referrer_url": "https://l.instagram.com/?u=https://www.artfolio.tech/AlexChen",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-11T19:05:45.000",
+    "ip_address": "115.55.66.77",
+    "visitor": {
+      "device_id": "d-insta-user-3",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "iOS",
+      "browser": "Safari",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "instagram",
+      "referrer_url": "https://l.instagram.com/?u=https://www.artfolio.tech/AlexChen",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-12T10:00:00.000",
+    "ip_address": "103.45.67.89",
+    "visitor": {
+      "device_id": "d-insta-user-1",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "iOS",
+      "browser": "Safari",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-12T15:00:00.000",
+    "ip_address": "185.215.53.100",
+    "visitor": {
+      "device_id": "d-sarah-edge-laptop",
+      "user_id": "sarah.j@gmail.com",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Microsoft Edge",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "JohnDoe",
+      "url": "https://www.artfolio.tech/JohnDoe",
+      "full_path": "/JohnDoe"
+    },
+    "referral": {
+      "source": "newsletter",
+      "referrer_url": "https://mail.google.com/",
+      "category": "email"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-12T15:03:00.000",
+    "ip_address": "185.215.53.100",
+    "visitor": {
+      "device_id": "d-sarah-edge-laptop",
+      "user_id": "sarah.j@gmail.com",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Microsoft Edge",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-12T15:04:30.000",
+    "ip_address": "185.215.53.100",
+    "visitor": {
+      "device_id": "d-sarah-edge-laptop",
+      "user_id": "sarah.j@gmail.com",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Microsoft Edge",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T09:30:00.000",
+    "ip_address": "185.215.53.101",
+    "visitor": {
+      "device_id": "d-sarah-ipad-safari",
+      "user_id": "sarah.j@gmail.com",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "iOS",
+      "browser": "Safari",
+      "device_type": "tablet"
+    },
+    "page": {
+      "page_name": "JohnDoe",
+      "url": "https://www.artfolio.tech/JohnDoe",
+      "full_path": "/JohnDoe"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T10:00:00.000",
+    "ip_address": "192.168.1.100",
+    "visitor": {
+      "device_id": "d-dev-chrome",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Linux",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T10:30:00.000",
+    "ip_address": "192.168.1.100",
+    "visitor": {
+      "device_id": "d-dev-firefox",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Linux",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T11:00:00.000",
+    "ip_address": "192.168.1.100",
+    "visitor": {
+      "device_id": "d-dev-chrome",
+      "user_id": "devuser@proton.me",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "Linux",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T12:00:00.000",
+    "ip_address": "192.168.1.100",
+    "visitor": {
+      "device_id": "d-dev-firefox",
+      "user_id": "devuser@proton.me",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "Linux",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T13:00:00.000",
+    "ip_address": "45.33.32.156",
+    "visitor": {
+      "device_id": "d-twitter-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    },
+    "referral": {
+      "source": "twitter",
+      "referrer_url": "https://t.co/abc123",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T13:00:15.000",
+    "ip_address": "88.99.11.22",
+    "visitor": {
+      "device_id": "d-twitter-2",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    },
+    "referral": {
+      "source": "twitter",
+      "referrer_url": "https://t.co/abc123",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T13:00:30.000",
+    "ip_address": "77.88.55.44",
+    "visitor": {
+      "device_id": "d-twitter-3",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Android",
+      "browser": "Chrome",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    },
+    "referral": {
+      "source": "twitter",
+      "referrer_url": "https://t.co/abc123",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-14T13:01:00.000",
+    "ip_address": "77.88.55.44",
+    "visitor": {
+      "device_id": "d-twitter-3",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Android",
+      "browser": "Chrome",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    },
+    "referral": {
+      "source": "twitter",
+      "referrer_url": "https://t.co/abc123",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T13:01:10.000",
+    "ip_address": "55.66.77.88",
+    "visitor": {
+      "device_id": "d-twitter-4",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "iOS",
+      "browser": "Safari",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    },
+    "referral": {
+      "source": "twitter",
+      "referrer_url": "https://t.co/abc123",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T13:02:00.000",
+    "ip_address": "33.44.55.66",
+    "visitor": {
+      "device_id": "d-twitter-5",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    },
+    "referral": {
+      "source": "twitter",
+      "referrer_url": "https://t.co/abc123",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T10:00:00.000",
+    "ip_address": "52.10.20.30",
+    "visitor": {
+      "device_id": "d-linkedin-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "JohnDoe",
+      "url": "https://www.artfolio.tech/JohnDoe",
+      "full_path": "/JohnDoe"
+    },
+    "referral": {
+      "source": "linkedin",
+      "referrer_url": "https://www.linkedin.com/feed/",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-14T10:01:30.000",
+    "ip_address": "52.10.20.30",
+    "visitor": {
+      "device_id": "d-linkedin-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "JohnDoe",
+      "url": "https://www.artfolio.tech/JohnDoe",
+      "full_path": "/JohnDoe"
+    },
+    "referral": {
+      "source": "linkedin",
+      "referrer_url": "https://www.linkedin.com/feed/",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T10:15:00.000",
+    "ip_address": "62.20.30.40",
+    "visitor": {
+      "device_id": "d-linkedin-2",
+      "user_id": "recruiter@company.io",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "JohnDoe",
+      "url": "https://www.artfolio.tech/JohnDoe",
+      "full_path": "/JohnDoe"
+    },
+    "referral": {
+      "source": "linkedin",
+      "referrer_url": "https://www.linkedin.com/in/johndoe/",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-08T08:00:00.000",
+    "ip_address": "150.60.70.80",
+    "visitor": {
+      "device_id": "d-loyal-fan",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-09T08:15:00.000",
+    "ip_address": "150.60.70.80",
+    "visitor": {
+      "device_id": "d-loyal-fan",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-10T07:50:00.000",
+    "ip_address": "150.60.70.80",
+    "visitor": {
+      "device_id": "d-loyal-fan",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-11T08:30:00.000",
+    "ip_address": "150.60.70.80",
+    "visitor": {
+      "device_id": "d-loyal-fan",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-12T09:00:00.000",
+    "ip_address": "150.60.70.80",
+    "visitor": {
+      "device_id": "d-loyal-fan",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-12T09:01:00.000",
+    "ip_address": "150.60.70.80",
+    "visitor": {
+      "device_id": "d-loyal-fan",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T16:00:00.000",
+    "ip_address": "200.100.50.25",
+    "visitor": {
+      "device_id": "d-gads-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.com/aclk?sa=l&ai=...",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T16:10:00.000",
+    "ip_address": "201.101.51.26",
+    "visitor": {
+      "device_id": "d-gads-2",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.com/aclk?sa=l&ai=...",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-13T16:10:30.000",
+    "ip_address": "201.101.51.26",
+    "visitor": {
+      "device_id": "d-gads-2",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.com/aclk?sa=l&ai=...",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-10T06:00:00.000",
+    "ip_address": "10.20.30.40",
+    "visitor": {
+      "device_id": "d-direct-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "JohnDoe",
+      "url": "https://www.artfolio.tech/JohnDoe",
+      "full_path": "/JohnDoe"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-11T12:00:00.000",
+    "ip_address": "20.30.40.50",
+    "visitor": {
+      "device_id": "d-direct-2",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-12T18:00:00.000",
+    "ip_address": "30.40.50.60",
+    "visitor": {
+      "device_id": "d-direct-3",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Android",
+      "browser": "Samsung Internet",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T07:00:00.000",
+    "ip_address": "40.50.60.70",
+    "visitor": {
+      "device_id": "d-yahoo-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "yahoo",
+      "referrer_url": "https://search.yahoo.com/search?p=alex+chen+art",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T02:00:00.000",
+    "ip_address": "50.60.70.80",
+    "visitor": {
+      "device_id": "d-reddit-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    },
+    "referral": {
+      "source": "reddit",
+      "referrer_url": "https://www.reddit.com/r/webdesign/comments/abc123",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "click",
+    "timestamp": "2026-03-14T02:01:00.000",
+    "ip_address": "50.60.70.80",
+    "visitor": {
+      "device_id": "d-reddit-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    },
+    "referral": {
+      "source": "reddit",
+      "referrer_url": "https://www.reddit.com/r/webdesign/comments/abc123",
+      "category": "social"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T11:00:00.000",
+    "ip_address": "60.70.80.90",
+    "visitor": {
+      "device_id": "d-whatsapp-1",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Android",
+      "browser": "Chrome",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    },
+    "referral": {
+      "source": "whatsapp",
+      "referrer_url": null,
+      "category": "other"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T14:00:00.000",
+    "ip_address": "70.80.90.100",
+    "visitor": {
+      "device_id": "d-owner-habiba",
+      "user_id": "habiba.qawi@artfolio.tech",
+      "visitor_type": "returning"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T03:00:00.000",
+    "ip_address": "139.130.4.5",
+    "visitor": {
+      "device_id": "d-intl-australia",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "JohnDoe",
+      "url": "https://www.artfolio.tech/JohnDoe",
+      "full_path": "/JohnDoe"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.com.au/search?q=john+doe+portfolio",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-13T14:00:00.000",
+    "ip_address": "196.200.50.10",
+    "visitor": {
+      "device_id": "d-intl-nigeria",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Android",
+      "browser": "Opera",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "AlexChen",
+      "url": "https://www.artfolio.tech/AlexChen",
+      "full_path": "/AlexChen"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.com.ng/search?q=designer+portfolio+examples",
+      "category": "search"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T06:00:00.000",
+    "ip_address": "106.195.77.88",
+    "visitor": {
+      "device_id": "d-intl-india",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Android",
+      "browser": "Chrome",
+      "device_type": "mobile"
+    },
+    "page": {
+      "page_name": "SarahMiller",
+      "url": "https://www.artfolio.tech/SarahMiller",
+      "full_path": "/SarahMiller"
+    }
+  },
+  {
+    "event_type": "page_view",
+    "timestamp": "2026-03-14T15:30:00.000",
+    "ip_address": "85.214.132.117",
+    "visitor": {
+      "device_id": "d-intl-germany",
+      "visitor_type": "new"
+    },
+    "device": {
+      "os": "Linux",
+      "browser": "Firefox",
+      "device_type": "desktop"
+    },
+    "page": {
+      "page_name": "HabibaQawi",
+      "url": "https://www.artfolio.tech/HabibaQawi",
+      "full_path": "/HabibaQawi"
+    },
+    "referral": {
+      "source": "google",
+      "referrer_url": "https://www.google.de/search?q=habiba+qawi",
+      "category": "search"
+    }
+  }
+]

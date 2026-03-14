@@ -35,14 +35,13 @@ async def create_event(event: EventIngestionPayload, db: Session = Depends(get_d
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/bulk", description="Create multiple events in bulk", name="Bulk Create Events")
-async def bulk_create_events(events: list[EventModel], db: Session = Depends(get_db)) -> list[EventModel]:
+@router.post("/automate", description="Pull events from the queue and save them to the database", name="Automate Events")
+async def automate_events(db: Session = Depends(get_db)) -> list[EventModel]:
     try:
-        print(f"Received {len(events)} events for bulk creation")
-        new_events = [Events(**event.dict()) for event in events]
-        db.bulk_save_objects(new_events)
-        db.commit()
-        return [EventModel(**event.__dict__) for event in new_events]
+        with open("scripts/mock_events.json", "r") as f:
+            events = json.load(f)
+            results = automate_event_ingestion(events, db)
+        return [EventModel(**event.__dict__) for event in results]
     except HTTPException:
         raise
     except Exception as e:

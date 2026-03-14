@@ -31,6 +31,14 @@ def ingest_event(event: EventIngestionPayload, db: Session) -> EventIngestionPay
         db.rollback()
         raise e
 
+def automate_event_ingestion(events: list[EventIngestionPayload], db: Session) -> list[EventIngestionPayload]:
+    try:
+        print(f"Received {len(events)} events for bulk creation")
+        return []
+    except Exception as e:
+        db.rollback()
+        raise e
+
 
 def save_events_to_db(events: list[EventIngestionPayload], db: Session) -> list[EventIngestionPayload]:
     try:
