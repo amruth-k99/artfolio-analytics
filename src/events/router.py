@@ -1,10 +1,11 @@
-from src.events.service import ingest_event
-from src.events.schema import EventIngestionPayload
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+import json
 from src.db import get_db
+from sqlalchemy.orm import Session
 from src.events.model import Events
 from src.events.schema import EventModel
+from src.events.schema import EventIngestionPayload
+from fastapi import APIRouter, Depends, HTTPException
+from src.events.service import ingest_event, automate_event_ingestion
 
 
 router = APIRouter(
