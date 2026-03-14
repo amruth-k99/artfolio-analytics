@@ -1,7 +1,6 @@
 from ..db.base import Base
 from sqlalchemy import String, UniqueConstraint, Integer
-from sqlalchemy.orm import Mapped, mapped_column
-from pydantic import BaseModel
+from sqlalchemy.orm import Mapped, Session, mapped_column
 
 
 class Locations(Base):
@@ -17,8 +16,3 @@ class Locations(Base):
                          name='uq_city_state_country'),
     )
 
-
-class LocationModel(BaseModel):
-    city: str
-    state: str
-    country: str

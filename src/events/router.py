@@ -15,6 +15,8 @@ async def get_events(db: Session = Depends(get_db)) -> list[EventModel]:
     try:
         events = db.query(Events).all()
         return [EventModel(**event.__dict__) for event in events]
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -28,6 +30,8 @@ async def create_event(event: EventModel, db: Session = Depends(get_db)) -> Even
         db.commit()
         db.refresh(new_event)
         return EventModel(**new_event.__dict__)
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -40,5 +44,7 @@ async def bulk_create_events(events: list[EventModel], db: Session = Depends(get
         db.bulk_save_objects(new_events)
         db.commit()
         return [EventModel(**event.__dict__) for event in new_events]
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
