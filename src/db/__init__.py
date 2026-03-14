@@ -1,11 +1,11 @@
-from .base import Base, SessionLocal, engine
+from src.db.base import Base, SessionLocal, engine
 from .page import Page
 from .date import Dates
 from .device_types import DeviceTypes
-from .visitors import Visitors
-from ..locations.model import Locations
+from src.visitors.model import Visitors
+from src.locations.model import Locations
 from .referrals import ReferralSources
-from ..events.model import Events
+from src.events.model import Events, EventTypes
 
 
 Base.metadata.create_all(bind=engine)

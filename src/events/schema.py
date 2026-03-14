@@ -6,30 +6,40 @@ import datetime
 
 class VisitorPayload(BaseModel):
     """Visitor identity from the client."""
-    user_id: str | None = Field(None, description="Logged-in user's email or ID. Null for guests.")
-    device_id: str = Field(..., description="Persistent device UUID (generated and stored on client)")
+    user_id: str | None = Field(
+        None, description="Logged-in user's email or ID. Null for guests.")
+    device_id: str = Field(
+        ..., description="Persistent device UUID (generated and stored on client)")
     visitor_type: str = Field("new", description="'new' or 'returning'")
 
 
 class DevicePayload(BaseModel):
     """Device/browser info collected from the client (navigator/user-agent)."""
-    os: str = Field(..., description="Operating system, e.g. 'Windows', 'macOS', 'Android'")
-    browser: str = Field(..., description="Browser name, e.g. 'Chrome', 'Microsoft Edge'")
-    device_type: str = Field("desktop", description="'desktop', 'mobile', or 'tablet'")
+    os: str = Field(...,
+                    description="Operating system, e.g. 'Windows', 'macOS', 'Android'")
+    browser: str = Field(...,
+                         description="Browser name, e.g. 'Chrome', 'Microsoft Edge'")
+    device_type: str = Field(
+        "desktop", description="'desktop', 'mobile', or 'tablet'")
 
 
 class PagePayload(BaseModel):
     """Page the event occurred on."""
-    page_name: str = Field(..., description="Portfolio owner's name or page identifier, e.g. 'username'")
-    url: str = Field(..., description="Full URL, e.g. 'https://www.artfolio.tech/username'")
+    page_name: str = Field(
+        ..., description="Portfolio owner's name or page identifier, e.g. 'username'")
+    url: str = Field(...,
+                     description="Full URL, e.g. 'https://www.artfolio.tech/username'")
     full_path: str = Field(..., description="URL path only, e.g. '/username'")
 
 
 class ReferralPayload(BaseModel):
     """Where the visitor came from."""
-    source: str = Field("direct", description="Referral source name, e.g. 'google', 'bing', 'direct'")
-    referrer_url: str | None = Field(None, description="Full referrer URL from document.referrer")
-    category: str = Field("direct", description="'search', 'social', 'email', 'direct', or 'other'")
+    source: str = Field(
+        "direct", description="Referral source name, e.g. 'google', 'bing', 'direct'")
+    referrer_url: str | None = Field(
+        None, description="Full referrer URL from document.referrer")
+    category: str = Field(
+        "direct", description="'search', 'social', 'email', 'direct', or 'other'")
 
 
 # --- Main client payload ---
@@ -46,10 +56,13 @@ class EventIngestionPayload(BaseModel):
     2. Upsert each dimension (visitor, location, device, page, referral, date)
     3. Create the fact event with the resolved FK IDs
     """
-    event_type: str = Field(..., description="Type of event: 'page_view', 'click', etc.")
-    timestamp: datetime.datetime = Field(..., description="Client-side timestamp when the event occurred")
-    ip_address: str = Field(..., description="Client IP address — server resolves to location via iplocation.com")
-    # we do NOT store IP addresses in the database. We use it to resolve location.
+    event_type: str = Field(...,
+                            description="Type of event: 'page_view', 'click', etc.")
+    timestamp: datetime.datetime = Field(
+        ..., description="Client-side timestamp when the event occurred")
+    ip_address: str = Field(
+        ..., description="Client IP address — server resolves to location via iplocation.com")
+    # we do NOT store IP addresses in the database. We use it to resolve location and delete it.
 
     visitor: VisitorPayload
     device: DevicePayload

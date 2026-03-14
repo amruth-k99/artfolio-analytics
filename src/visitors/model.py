@@ -1,10 +1,9 @@
 from typing_extensions import Literal
 
-from .base import Base
-from sqlalchemy import String, DateTime, Integer
+from src.db.base import Base
+from sqlalchemy import String, DateTime, Integer, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 import datetime
-from pydantic import BaseModel
 
 
 class Visitors(Base):
@@ -15,7 +14,6 @@ class Visitors(Base):
                          ] = mapped_column(nullable=False)
     user_id: Mapped[str] = mapped_column(String, index=True, nullable=True)
     device_id: Mapped[str] = mapped_column(String, index=True, nullable=True)
-    session_id: Mapped[str] = mapped_column(String, index=True, nullable=False)
     signup_date: Mapped[datetime.datetime] = mapped_column(
         DateTime, index=True, nullable=True)
     account_status: Mapped[Literal["active", "inactive", "deleted"]
@@ -25,25 +23,7 @@ class Visitors(Base):
     user_type: Mapped[Literal["guest", "user", "admin"]
                       ] = mapped_column(nullable=False)
 
-
-class VisitorModel(BaseModel):
-    visitor_type: Literal["new", "returning"]
-    user_id: str | None = None
-    device_id: str | None = None
-    session_id: str
-    signup_date: datetime.datetime | None = None
-    account_status: Literal["active", "inactive", "deleted"]
-    portfolio_created_at: datetime.datetime | None = None
-    user_type: Literal["guest", "user", "admin"]
-
-
-class VisitorCreate(VisitorModel):
-    pass
-
-
-class VisitorUpdate(VisitorModel):
-    pass
-
-
-class VisitorDelete(VisitorModel):
-    id: str
+    # unique by user_id, device_id
+    __table_args__ = (
+        UniqueConstraint('user_id', 'device_id', name='uq_user_device'),
+    )

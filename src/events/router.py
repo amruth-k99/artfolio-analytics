@@ -1,3 +1,5 @@
+from src.events.service import ingest_event
+from src.events.schema import EventIngestionPayload
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src.db import get_db
@@ -23,14 +25,10 @@ async def get_events(db: Session = Depends(get_db)) -> list[EventModel]:
 
 
 @router.post("/", description="Create a new event", name="Create Event")
-async def create_event(event: EventModel, db: Session = Depends(get_db)) -> EventModel:
+async def create_event(event: EventIngestionPayload, db: Session = Depends(get_db)) -> EventIngestionPayload:
     try:
-        print(f"Received event: {event}")
-        new_event = Events(**event.dict())
-        db.add(new_event)
-        db.commit()
-        db.refresh(new_event)
-        return EventModel(**new_event.__dict__)
+        new_event = ingest_event(event, db)
+        return EventIngestionPayload(**new_event.__dict__)
     except HTTPException:
         raise
     except Exception as e:

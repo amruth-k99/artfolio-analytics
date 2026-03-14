@@ -1,11 +1,10 @@
-from ..db.base import Base
-from sqlalchemy import ForeignKey, DateTime, Integer, String
+from src.db.base import Base
+from sqlalchemy import String, DateTime, Integer, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
-from pydantic import BaseModel
 import datetime
 
 
-class EventType(Base):
+class EventTypes(Base):
     __tablename__ = "d_event_types"
     id: Mapped[int] = mapped_column(
         Integer, primary_key=True, autoincrement=True)
@@ -24,12 +23,13 @@ class Events(Base):
         Integer, ForeignKey("d_visitors.id"), nullable=False)
     location_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("d_locations.id"), nullable=False)
+    page_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("d_pages.id"), nullable=False)
     referral_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("d_referral_sources.id"), nullable=False)
     datetime: Mapped[datetime.datetime] = mapped_column(
         DateTime, nullable=False)
-    page_id: Mapped[int] = mapped_column(
-        Integer, ForeignKey("d_pages.id"), nullable=False)
+    session_id: Mapped[str] = mapped_column(String, nullable=False)
     event_type_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("d_event_types.id"), nullable=False)
     properties: Mapped[str] = mapped_column(String, nullable=True)
