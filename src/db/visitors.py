@@ -14,7 +14,7 @@ class Visitors(Base):
     visitor_type: Mapped[Literal["new", "returning"]
                          ] = mapped_column(nullable=False)
     user_id: Mapped[str] = mapped_column(String, index=True, nullable=True)
-    session_id: Mapped[str] = mapped_column(String, index=True, nullable=False)
+    session_id: Mapped[str] = mapped_column(String, index=True, nullable=False) 
     signup_date: Mapped[datetime.datetime] = mapped_column(
         DateTime, index=True, nullable=True)
     account_status: Mapped[Literal["active", "inactive", "deleted"]

@@ -10,3 +10,4 @@ class Page(Base):
     page_name: Mapped[str] = mapped_column(String, index=True, nullable=False)
     url: Mapped[str] = mapped_column(String, index=True, nullable=False)
     full_path: Mapped[str] = mapped_column(String, index=True, nullable=False)
+    host: Mapped[str] = mapped_column(String, index=True, nullable=False)

@@ -1,7 +1,6 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Integer, UniqueConstraint
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy.orm import Mapped, mapped_column
-from typing import Literal
 from .base import Base
 # Pydantic models for serialization
 
@@ -10,14 +9,20 @@ class DeviceTypes(Base):
     __tablename__ = "d_device_types"
     id: Mapped[int] = mapped_column(
         Integer, primary_key=True, autoincrement=True)
-    os: Mapped[Literal["Android", "iOS", "Windows"]
-               ] = mapped_column(nullable=False)
+    os: Mapped[str] = mapped_column(nullable=False)
     device_type: Mapped[str] = mapped_column(nullable=False)
+    browser: Mapped[str] = mapped_column(nullable=False)
+
+    # unique constraint on os, device_type, and browser
+    __table_args__ = (
+        UniqueConstraint('os', 'device_type', 'browser',
+                         name='uix_os_device_type_browser'),
+    )
 
 
 class DeviceTypesBase(BaseModel):
     id: int
-    os: Literal["Android", "iOS", "Windows"]
+    os: str
     device_type: str
 
 

@@ -33,14 +33,3 @@ class Events(Base):
     event_type_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("d_event_types.id"), nullable=False)
     properties: Mapped[str] = mapped_column(String, nullable=True)
-    
-
-
-class EventModel(BaseModel):
-    date_id: int
-    device_type_id: int
-    visitor_id: int
-    location_id: int
-    referral_id: int
-    datetime: datetime.datetime
-    page_id: int
