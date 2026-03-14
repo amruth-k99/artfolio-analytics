@@ -14,7 +14,8 @@ class Visitors(Base):
     visitor_type: Mapped[Literal["new", "returning"]
                          ] = mapped_column(nullable=False)
     user_id: Mapped[str] = mapped_column(String, index=True, nullable=True)
-    session_id: Mapped[str] = mapped_column(String, index=True, nullable=False) 
+    device_id: Mapped[str] = mapped_column(String, index=True, nullable=True)
+    session_id: Mapped[str] = mapped_column(String, index=True, nullable=False)
     signup_date: Mapped[datetime.datetime] = mapped_column(
         DateTime, index=True, nullable=True)
     account_status: Mapped[Literal["active", "inactive", "deleted"]
@@ -27,11 +28,12 @@ class Visitors(Base):
 
 class VisitorModel(BaseModel):
     visitor_type: Literal["new", "returning"]
-    user_id: str | None
+    user_id: str | None = None
+    device_id: str | None = None
     session_id: str
-    signup_date: datetime.datetime | None
+    signup_date: datetime.datetime | None = None
     account_status: Literal["active", "inactive", "deleted"]
-    portfolio_created_at: datetime.datetime | None
+    portfolio_created_at: datetime.datetime | None = None
     user_type: Literal["guest", "user", "admin"]
 
 

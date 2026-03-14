@@ -21,9 +21,9 @@ class DeviceTypes(Base):
 
 
 class DeviceTypesBase(BaseModel):
-    id: int
     os: str
     device_type: str
+    browser: str
 
 
 class DeviceTypesCreate(DeviceTypesBase):
