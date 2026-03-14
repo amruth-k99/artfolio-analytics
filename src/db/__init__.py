@@ -3,7 +3,7 @@ from .page import Page
 from .date import Dates
 from .device_types import DeviceTypes
 from .visitors import Visitors
-from .locations import Locations
+from ..locations.model import Locations
 from .referrals import ReferralSources
 from ..events.model import Events
 

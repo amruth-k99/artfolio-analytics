@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 from typing import Literal
 from src.events.router import router as events_router
+from src.locations.router import router as locations_router
 
 app = FastAPI()
 
 app.include_router(events_router)
+app.include_router(locations_router)
 
 
 @app.get("/",

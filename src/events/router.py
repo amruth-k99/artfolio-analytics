@@ -23,7 +23,7 @@ async def get_events(db: Session = Depends(get_db)) -> list[EventModel]:
 async def create_event(event: EventModel, db: Session = Depends(get_db)) -> EventModel:
     try:
         print(f"Received event: {event}")
-        new_event = Events(**event.model_dump_json())
+        new_event = Events(**event.dict())
         db.add(new_event)
         db.commit()
         db.refresh(new_event)
@@ -36,7 +36,7 @@ async def create_event(event: EventModel, db: Session = Depends(get_db)) -> Even
 async def bulk_create_events(events: list[EventModel], db: Session = Depends(get_db)) -> list[EventModel]:
     try:
         print(f"Received {len(events)} events for bulk creation")
-        new_events = [Events(**event.model_dump_json()) for event in events]
+        new_events = [Events(**event.dict()) for event in events]
         db.bulk_save_objects(new_events)
         db.commit()
         return [EventModel(**event.__dict__) for event in new_events]
