@@ -1,12 +1,20 @@
 # Artfolio Analytics
 
-This is a repository that helps and explains how Artfolio analytics helps users to track their analytics from their URL
+![Python](https://img.shields.io/badge/Python-3.13+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-V2-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-003B57?style=for-the-badge&logo=postgresql&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-The system architecture is updated in the URL: https://whimsical.com/amruth26/artfolio-analytics-system-design-2eZGHwX3Ju32bhnfTZbXv7
+An open-source analytics platform for [Artfolio](https://www.artfolio.tech) — track views, visitor trends, referral sources, and device breakdowns for portfolio URLs.
+
+The system architecture is updated in the URL: [Artfolio Analytics System Design](https://whimsical.com/amruth26/artfolio-analytics-system-design-2eZGHwX3Ju32bhnfTZbXv7)
 
 # Production setup
 
 To run production environment, set the environment variable DEBUG to `False`
+
 # Table of Contents
 
 - [Overview](#overview)
@@ -45,21 +53,23 @@ For a detailed architecture diagram, visit: [Artfolio Analytics System Design](h
 # Getting Started
 
 1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/yourusername/artfolio-analytics.git
-    cd artfolio-analytics
-    ```
+
+   ```bash
+   git clone https://github.com/amruth-k99/artfolio-analytics.git
+   cd artfolio-analytics
+   ```
 
 2. **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 3. **Run the development server:**
-    ```bash
-    export DEBUG=True
-    uvicorn src.main:app --reload
-    ```
+   ```bash
+   export DEBUG=True
+   uvicorn src.main:app --reload
+   ```
 
 # Production Setup
 
