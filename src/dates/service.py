@@ -17,8 +17,6 @@ def resolve_date(timestamp: datetime.datetime, db: Session) -> int:
     # Round down to the nearest minute for better performance and deduplication
     timestamp = timestamp.replace(second=0, microsecond=0)
     existing = db.query(Dates).filter_by(date=timestamp).first()
-    print(
-        f"Resolving date for timestamp {timestamp}: found existing {existing}")
     if existing:
         return existing.id
 

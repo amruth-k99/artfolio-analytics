@@ -58,15 +58,16 @@ def ingest_event(event: EventIngestionPayload, db: Session) -> Events:
         db.add(new_event)
         db.commit()
         db.refresh(new_event)
-
+        print(f"\n\nIngested event: {new_event.id}\n\n")
         return new_event
 
     except Exception as e:
         db.rollback()
+        print(f"\n\nError ingesting event: {e}\n\n")
         raise e
 
 
-def automate_event_ingestion(events: list[dict], db: Session) -> list[Events]:
+def automate_event_ingestion(events: list[dict], db: Session) -> dict[str, list]:
     """
     Process a batch of raw event dicts (e.g. from mock_events.json).
     Each dict is validated as EventIngestionPayload, then ingested.
@@ -75,16 +76,21 @@ def automate_event_ingestion(events: list[dict], db: Session) -> list[Events]:
     """
 
     results = []
+    errors = []
 
     for i, raw_event in enumerate(events):
         try:
             print(f"\nProcessing event {i + 1}/{len(events)}")
             event = EventIngestionPayload(**raw_event)
             result = ingest_event(event, db)
-            results.append(result)
+            results.append(result.id)  # or store full result as needed
         except Exception as e:
             print(f"Event {i + 1} failed: {e}")
+            # or store error details as needed
+            errors.append({"event": raw_event, "err": str(e)})
+
             continue  # skip failed events, don't break the batch
 
     print(f"Ingested {len(results)}/{len(events)} events successfully")
-    return results
+    print(f"Failed to ingest {len(errors)} events")
+    return {"results": results, "errors": errors}

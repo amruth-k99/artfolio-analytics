@@ -25,8 +25,13 @@ def get_location_by_ip(location_ip: str, db: Session) -> int:
         data = response.json()
 
         if "found" in data and not data["found"]:
-            raise Exception(
-                "Location not found. IP address may be invalid or not in the database.")
+            print(
+                f"Location not found. IP address {location_ip} may be invalid or not in the database.")
+            data = {
+                "city": "Unknown",
+                "region_name": "Unknown",
+                "country_name": location_ip
+            }
 
         location = save_location_to_db({
             "city": data.get("city"),

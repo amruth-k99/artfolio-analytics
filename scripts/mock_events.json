@@ -3,7 +3,7 @@
     "event_type": "page_view",
     "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-10T09:15:00.000",
-    "ip_address": "198.51.100.42",
+    "ip_address": "27.123.145.67",
     "visitor": {
       "device_id": "d-maria-chrome-laptop",
       "visitor_type": "new"
@@ -28,7 +28,7 @@
     "event_type": "click",
     "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-10T09:16:30.000",
-    "ip_address": "198.51.100.42",
+    "ip_address": "27.123.145.67",
     "visitor": {
       "device_id": "d-maria-chrome-laptop",
       "visitor_type": "new"
@@ -53,7 +53,7 @@
     "event_type": "page_view",
     "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-10T09:18:00.000",
-    "ip_address": "198.51.100.42",
+    "ip_address": "27.123.145.67",
     "visitor": {
       "device_id": "d-maria-chrome-laptop",
       "visitor_type": "new"
@@ -78,7 +78,7 @@
     "event_type": "page_view",
     "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-11T14:22:00.000",
-    "ip_address": "198.51.100.42",
+    "ip_address": "27.123.145.67",
     "visitor": {
       "device_id": "d-maria-chrome-laptop",
       "visitor_type": "returning"
@@ -98,7 +98,7 @@
     "event_type": "page_view",
     "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-11T14:25:00.000",
-    "ip_address": "198.51.100.42",
+    "ip_address": "27.123.145.67",
     "visitor": {
       "device_id": "d-maria-chrome-laptop",
       "user_id": "maria.garcia@outlook.com",
@@ -161,7 +161,7 @@
     "event_type": "page_view",
     "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-18T20:10:00.000",
-    "ip_address": "198.51.100.42",
+    "ip_address": "27.123.145.67",
     "visitor": {
       "device_id": "d-maria-chrome-laptop",
       "user_id": "maria.garcia@outlook.com",
@@ -456,7 +456,7 @@
     "event_type": "page_view",
     "session_id": "0a49a340-7109-41d6-87f2-3eb099711da3",
     "timestamp": "2026-03-13T10:00:00.000",
-    "ip_address": "192.168.1.100",
+    "ip_address": "71.212.155.180",
     "visitor": {
       "device_id": "d-dev-chrome",
       "visitor_type": "new"
@@ -476,7 +476,7 @@
     "event_type": "page_view",
     "session_id": "3b6a659c-976c-4c3d-b59f-5dcf8ad5eb73",
     "timestamp": "2026-03-13T10:30:00.000",
-    "ip_address": "192.168.1.100",
+    "ip_address": "71.212.155.180",
     "visitor": {
       "device_id": "d-dev-firefox",
       "visitor_type": "new"
@@ -496,7 +496,7 @@
     "event_type": "page_view",
     "session_id": "0a49a340-7109-41d6-87f2-3eb099711da3",
     "timestamp": "2026-03-13T11:00:00.000",
-    "ip_address": "192.168.1.100",
+    "ip_address": "71.212.155.180",
     "visitor": {
       "device_id": "d-dev-chrome",
       "user_id": "devuser@proton.me",
@@ -517,7 +517,7 @@
     "event_type": "page_view",
     "session_id": "3b6a659c-976c-4c3d-b59f-5dcf8ad5eb73",
     "timestamp": "2026-03-13T12:00:00.000",
-    "ip_address": "192.168.1.100",
+    "ip_address": "71.212.155.180",
     "visitor": {
       "device_id": "d-dev-firefox",
       "user_id": "devuser@proton.me",
@@ -959,7 +959,7 @@
     "event_type": "page_view",
     "session_id": "fd284bec-097b-43c2-a832-92b40f57829e",
     "timestamp": "2026-03-10T06:00:00.000",
-    "ip_address": "10.20.30.40",
+    "ip_address": "47.123.45.67",
     "visitor": {
       "device_id": "d-direct-1",
       "visitor_type": "new"

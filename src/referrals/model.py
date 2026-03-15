@@ -1,5 +1,5 @@
 from src.db.base import Base
-from sqlalchemy import String, Integer
+from sqlalchemy import String, Integer, UniqueConstraint
 from typing import Literal
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -14,3 +14,8 @@ class ReferralSources(Base):
         String, index=True, nullable=True)
     category: Mapped[Literal["social", "search", "email", "direct", "other"]
                      ] = mapped_column(nullable=False, default="direct")
+
+    __table_args__ = (
+        UniqueConstraint("source", "referrer_url", "category",
+                         name="uq_referral_source_url_category"),
+    )
