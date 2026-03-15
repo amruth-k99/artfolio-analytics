@@ -1,4 +1,4 @@
-from .base import Base, engine
+from src.db.base import Base
 from sqlalchemy import String, Integer
 from typing import Literal
 from sqlalchemy.orm import Mapped, mapped_column

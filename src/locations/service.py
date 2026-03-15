@@ -6,7 +6,7 @@ from src.locations.model import Locations
 from src.locations.schema import LocationModel, LocationFilterRequest
 
 
-async def get_location_by_ip(location_ip: str, db: Session) -> dict:
+def get_location_by_ip(location_ip: str, db: Session) -> int:
     try:
         # make async http request to make it non-blocking
         headers = {
@@ -17,30 +17,29 @@ async def get_location_by_ip(location_ip: str, db: Session) -> dict:
             'ip': location_ip
         }
 
-        async with httpx.AsyncClient() as client:
-            response = await client.post(
-                "https://iplocation.com",
-                data=payload,
-                headers=headers
-            )
-            data = response.json()
+        response = httpx.post(
+            "https://iplocation.com",
+            data=payload,
+            headers=headers
+        )
+        data = response.json()
 
-            if "found" in data and not data["found"]:
-                raise Exception(
-                    "Location not found. IP address may be invalid or not in the database.")
+        if "found" in data and not data["found"]:
+            raise Exception(
+                "Location not found. IP address may be invalid or not in the database.")
 
-            save_location_to_db({
-                "city": data.get("city"),
-                "state": data.get("region_name"),
-                "country": data.get("country_name")
-            }, db)
+        location = save_location_to_db({
+            "city": data.get("city"),
+            "state": data.get("region_name"),
+            "country": data.get("country_name")
+        }, db)
 
-            return data
+        return location
     except Exception as e:
         raise Exception(f"Error fetching location data: {str(e)}")
 
 
-def save_location_to_db(location_data: dict, db: Session) -> LocationModel:
+def save_location_to_db(location_data: dict, db: Session) -> int:
     try:
 
         new_location = Locations(
@@ -57,13 +56,13 @@ def save_location_to_db(location_data: dict, db: Session) -> LocationModel:
 
         if existing_location:
             print("Location already exists in the database. Skipping save.")
-            return LocationModel(**existing_location.__dict__)
+            return existing_location.id
         else:
             db.add(new_location)
             db.commit()
             db.refresh(new_location)
 
-        return LocationModel(**new_location.__dict__)
+        return new_location.id
 
     except Exception as e:
         db.rollback()
@@ -85,3 +84,47 @@ async def search_locations(filters: LocationFilterRequest, db: Session) -> list[
         return [LocationModel(**location.__dict__) for location in locations]
     except Exception as e:
         raise Exception(f"Error fetching locations: {str(e)}")
+
+
+async def resolve_location(ip_address: str, db: Session) -> int:
+    """
+    Resolve location from IP address and return the location_id.
+
+    Calls external IP geolocation API (sync), then upserts into d_locations.
+    Falls back to "Unknown" if the API fails, so ingestion never breaks.
+    """
+
+    try:
+        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+        payload = {'ip': ip_address}
+
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                "https://iplocation.com",
+                data=payload,
+                headers=headers
+            )
+            data = response.json()
+
+            if "found" in data and not data["found"]:
+                location_data = {
+                    "city": "Unknown",
+                    "state": "Unknown",
+                    "country": ip_address
+                }
+            else:
+                location_data = {
+                    "city": data.get("city", "Unknown"),
+                    "state": data.get("region_name", "Unknown"),
+                    "country": data.get("country_name", ip_address)
+                }
+    except Exception:
+        # External API failed — use placeholder so ingestion doesn't break
+        location_data = {
+            "city": "Unknown",
+            "state": "Unknown",
+            "country": ip_address
+        }
+
+    result = save_location_to_db(location_data, db)
+    return result

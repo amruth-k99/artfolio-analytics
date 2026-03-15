@@ -58,6 +58,8 @@ class EventIngestionPayload(BaseModel):
     """
     event_type: str = Field(...,
                             description="Type of event: 'page_view', 'click', etc.")
+    session_id: str = Field(
+        ..., description="Client-generated session UUID, persisted per browser session")
     timestamp: datetime.datetime = Field(
         ..., description="Client-side timestamp when the event occurred")
     ip_address: str = Field(
@@ -80,6 +82,8 @@ class EventModel(BaseModel):
     location_id: int
     referral_id: int
     datetime: datetime.datetime
+    session_id: str
     page_id: int
     event_type_id: int
     properties: str | None = None
+

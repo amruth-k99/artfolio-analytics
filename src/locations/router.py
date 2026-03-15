@@ -2,7 +2,7 @@ from src.locations.schema import LocationModel, LocationFilterRequest
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src.db import get_db
-from src.locations.service import get_location_by_ip, search_locations, save_location_to_db
+from src.locations.service import resolve_location, search_locations, save_location_to_db
 
 
 router = APIRouter(
@@ -35,7 +35,7 @@ async def create_location_api(location: LocationModel, db: Session = Depends(get
 
 
 @router.get("/ip/{location_ip}", description="Get a location by IP", name="Get Location by IP")
-async def get_location_by_ip_api(location_ip: str, db: Session = Depends(get_db)) -> dict:
+async def get_location_by_ip_api(location_ip: str, db: Session = Depends(get_db)) -> int:
     try:
         # make async http request to make it non-blocking
         # validate IP address format before making the request
@@ -45,7 +45,7 @@ async def get_location_by_ip_api(location_ip: str, db: Session = Depends(get_db)
             raise HTTPException(
                 status_code=400, detail="Invalid IP address format")
 
-        response = await get_location_by_ip(location_ip, db)
+        response = await resolve_location(location_ip, db)
 
         return response
     except HTTPException:

@@ -7,7 +7,7 @@ that don't already exist (checks by unique key before inserting).
 
 from sqlalchemy.orm import Session
 from src.events.model import EventTypes
-from src.db.referrals import ReferralSources
+from src.referrals.model import ReferralSources
 from src.db.constants import EVENT_TYPES
 
 

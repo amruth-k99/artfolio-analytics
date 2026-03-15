@@ -26,10 +26,10 @@ async def get_events(db: Session = Depends(get_db)) -> list[EventModel]:
 
 
 @router.post("/", description="Create a new event", name="Create Event")
-async def create_event(event: EventIngestionPayload, db: Session = Depends(get_db)) -> EventIngestionPayload:
+async def create_event(event: EventIngestionPayload, db: Session = Depends(get_db)) -> EventModel:
     try:
         new_event = ingest_event(event, db)
-        return EventIngestionPayload(**new_event.__dict__)
+        return EventModel(**new_event.__dict__)
     except HTTPException:
         raise
     except Exception as e:
@@ -37,7 +37,7 @@ async def create_event(event: EventIngestionPayload, db: Session = Depends(get_d
 
 
 @router.post("/automate", description="Pull events from the queue and save them to the database", name="Automate Events")
-async def automate_events(db: Session = Depends(get_db)) -> list[EventModel]:
+def automate_events(db: Session = Depends(get_db)) -> list[EventModel]:
     try:
         with open("scripts/mock_events.json", "r") as f:
             events = json.load(f)

@@ -19,7 +19,7 @@ Usage:
 
 from sqlalchemy.orm import Session
 from src.events.model import EventTypes
-from src.db.referrals import ReferralSources
+from src.referrals.model import ReferralSources
 
 
 class DimensionRegistry:

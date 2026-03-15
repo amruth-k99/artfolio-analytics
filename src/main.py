@@ -11,8 +11,16 @@ from src.events.router import router as events_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Startup and shutdown lifecycle for the app."""
+    """
+    Startup and shutdown lifecycle for the app.
+    This is where we can do any necessary setup or teardown for the application, 
+    such as connecting to the database, seeding default data, loading registries, etc.
+    For more resources: https://fastapi.tiangolo.com/advanced/events/
+    """
     # --- Startup ---
+    from src.db import init_db
+    init_db()  # create tables (imports Events model inside to avoid circular import)
+
     db = SessionLocal()
     try:
         seed_defaults(db)

@@ -6,6 +6,7 @@
   // A1: First visit — Google search, Chrome desktop, guest
   {
     "event_type": "page_view",
+    "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-10T09:15:00.000",
     "ip_address": "198.51.100.42",
     "visitor": {
@@ -31,6 +32,7 @@
   // A2: Maria clicks on a project on the same visit
   {
     "event_type": "click",
+    "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-10T09:16:30.000",
     "ip_address": "198.51.100.42",
     "visitor": {
@@ -56,6 +58,7 @@
   // A3: Maria visits another portfolio during same session
   {
     "event_type": "page_view",
+    "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-10T09:18:00.000",
     "ip_address": "198.51.100.42",
     "visitor": {
@@ -81,6 +84,7 @@
   // A4: Maria returns next day — direct visit (typed URL), same device, now "returning"
   {
     "event_type": "page_view",
+    "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-11T14:22:00.000",
     "ip_address": "198.51.100.42",
     "visitor": {
@@ -101,6 +105,7 @@
   // A5: Maria signs up and logs in on the same device
   {
     "event_type": "page_view",
+    "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-11T14:25:00.000",
     "ip_address": "198.51.100.42",
     "visitor": {
@@ -122,6 +127,7 @@
   // A6: Maria visits from her phone (new device, logged in)
   {
     "event_type": "page_view",
+    "session_id": "85fa93c5-64e2-402f-8949-367e59d5b567",
     "timestamp": "2026-03-12T08:05:00.000",
     "ip_address": "203.0.113.55",
     "visitor": {
@@ -143,6 +149,7 @@
   // A7: Maria browses on phone, clicks on project
   {
     "event_type": "click",
+    "session_id": "85fa93c5-64e2-402f-8949-367e59d5b567",
     "timestamp": "2026-03-12T08:06:15.000",
     "ip_address": "203.0.113.55",
     "visitor": {
@@ -164,6 +171,7 @@
   // A8: Maria visits from laptop again a week later — returning on both device and user
   {
     "event_type": "page_view",
+    "session_id": "bef72a07-c07e-49d5-8bdb-79638b0eeff5",
     "timestamp": "2026-03-18T20:10:00.000",
     "ip_address": "198.51.100.42",
     "visitor": {
@@ -189,6 +197,7 @@
   // B1: Guest finds portfolio via Bing
   {
     "event_type": "page_view",
+    "session_id": "694f4086-798b-4db3-8968-1537c12b2ff6",
     "timestamp": "2026-03-10T11:30:00.000",
     "ip_address": "72.134.201.88",
     "visitor": {
@@ -214,6 +223,7 @@
   // B2: Guest clicks through to another portfolio
   {
     "event_type": "page_view",
+    "session_id": "694f4086-798b-4db3-8968-1537c12b2ff6",
     "timestamp": "2026-03-10T11:32:00.000",
     "ip_address": "72.134.201.88",
     "visitor": {
@@ -234,6 +244,7 @@
   // B3: Guest views a third portfolio
   {
     "event_type": "page_view",
+    "session_id": "694f4086-798b-4db3-8968-1537c12b2ff6",
     "timestamp": "2026-03-10T11:35:00.000",
     "ip_address": "72.134.201.88",
     "visitor": {
@@ -258,6 +269,7 @@
   // C1: User from Instagram on iPhone
   {
     "event_type": "page_view",
+    "session_id": "1892e3e1-a8ec-45e0-b7aa-1a48f1c82676",
     "timestamp": "2026-03-11T19:00:00.000",
     "ip_address": "103.45.67.89",
     "visitor": {
@@ -283,6 +295,7 @@
   // C2: Another user from Instagram on Android
   {
     "event_type": "page_view",
+    "session_id": "bd6a1db3-396b-4f3c-91d5-8af1a1602ba1",
     "timestamp": "2026-03-11T19:02:00.000",
     "ip_address": "110.22.33.44",
     "visitor": {
@@ -308,6 +321,7 @@
   // C3: Third Instagram user, also clicks
   {
     "event_type": "page_view",
+    "session_id": "bbe88ef9-2264-4a09-a366-309f39b7ebdb",
     "timestamp": "2026-03-11T19:05:00.000",
     "ip_address": "115.55.66.77",
     "visitor": {
@@ -332,6 +346,7 @@
   },
   {
     "event_type": "click",
+    "session_id": "bbe88ef9-2264-4a09-a366-309f39b7ebdb",
     "timestamp": "2026-03-11T19:05:45.000",
     "ip_address": "115.55.66.77",
     "visitor": {
@@ -357,6 +372,7 @@
   // C5: One Instagram user returns next day directly
   {
     "event_type": "page_view",
+    "session_id": "1892e3e1-a8ec-45e0-b7aa-1a48f1c82676",
     "timestamp": "2026-03-12T10:00:00.000",
     "ip_address": "103.45.67.89",
     "visitor": {
@@ -381,6 +397,7 @@
   // D1: Sarah clicks email link on laptop
   {
     "event_type": "page_view",
+    "session_id": "ffb17fa1-f6a8-4791-ba5b-838f5ad2e9c1",
     "timestamp": "2026-03-12T15:00:00.000",
     "ip_address": "185.215.53.100",
     "visitor": {
@@ -407,6 +424,7 @@
   // D2: Sarah browses to another portfolio
   {
     "event_type": "page_view",
+    "session_id": "ffb17fa1-f6a8-4791-ba5b-838f5ad2e9c1",
     "timestamp": "2026-03-12T15:03:00.000",
     "ip_address": "185.215.53.100",
     "visitor": {
@@ -428,6 +446,7 @@
   // D3: Sarah clicks on a project
   {
     "event_type": "click",
+    "session_id": "ffb17fa1-f6a8-4791-ba5b-838f5ad2e9c1",
     "timestamp": "2026-03-12T15:04:30.000",
     "ip_address": "185.215.53.100",
     "visitor": {
@@ -449,6 +468,7 @@
   // D4: Sarah returns on tablet via direct
   {
     "event_type": "page_view",
+    "session_id": "3979fae7-5abc-4f46-8b5e-405e3f7549ab",
     "timestamp": "2026-03-13T09:30:00.000",
     "ip_address": "185.215.53.101",
     "visitor": {
@@ -474,6 +494,7 @@
   // E1: Dev visits on Chrome
   {
     "event_type": "page_view",
+    "session_id": "0a49a340-7109-41d6-87f2-3eb099711da3",
     "timestamp": "2026-03-13T10:00:00.000",
     "ip_address": "192.168.1.100",
     "visitor": {
@@ -494,6 +515,7 @@
   // E2: Same person on Firefox (different device_id due to separate localStorage)
   {
     "event_type": "page_view",
+    "session_id": "3b6a659c-976c-4c3d-b59f-5dcf8ad5eb73",
     "timestamp": "2026-03-13T10:30:00.000",
     "ip_address": "192.168.1.100",
     "visitor": {
@@ -514,6 +536,7 @@
   // E3: Logs in on Chrome — now linkable
   {
     "event_type": "page_view",
+    "session_id": "0a49a340-7109-41d6-87f2-3eb099711da3",
     "timestamp": "2026-03-13T11:00:00.000",
     "ip_address": "192.168.1.100",
     "visitor": {
@@ -535,6 +558,7 @@
   // E4: Logs in on Firefox too — both browsers now linked
   {
     "event_type": "page_view",
+    "session_id": "3b6a659c-976c-4c3d-b59f-5dcf8ad5eb73",
     "timestamp": "2026-03-13T12:00:00.000",
     "ip_address": "192.168.1.100",
     "visitor": {
@@ -559,6 +583,7 @@
   // ========================================
   {
     "event_type": "page_view",
+    "session_id": "84376cfc-bbb7-4e58-a6d1-28f9474cb491",
     "timestamp": "2026-03-14T13:00:00.000",
     "ip_address": "45.33.32.156",
     "visitor": {
@@ -583,6 +608,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "e616cb8f-8eeb-4be7-bfc6-b325cd3017ab",
     "timestamp": "2026-03-14T13:00:15.000",
     "ip_address": "88.99.11.22",
     "visitor": {
@@ -607,6 +633,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "3f28ffaa-8946-45e4-b048-c8ec6ae87a88",
     "timestamp": "2026-03-14T13:00:30.000",
     "ip_address": "77.88.55.44",
     "visitor": {
@@ -631,6 +658,7 @@
   },
   {
     "event_type": "click",
+    "session_id": "3f28ffaa-8946-45e4-b048-c8ec6ae87a88",
     "timestamp": "2026-03-14T13:01:00.000",
     "ip_address": "77.88.55.44",
     "visitor": {
@@ -655,6 +683,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "68124699-40e3-4598-9f6d-da4f679f881e",
     "timestamp": "2026-03-14T13:01:10.000",
     "ip_address": "55.66.77.88",
     "visitor": {
@@ -679,6 +708,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "d61a4341-7908-432c-b810-b653a8ff6346",
     "timestamp": "2026-03-14T13:02:00.000",
     "ip_address": "33.44.55.66",
     "visitor": {
@@ -706,6 +736,7 @@
   // ========================================
   {
     "event_type": "page_view",
+    "session_id": "451e298e-81ea-46f3-99d2-8fd728b426fc",
     "timestamp": "2026-03-14T10:00:00.000",
     "ip_address": "52.10.20.30",
     "visitor": {
@@ -730,6 +761,7 @@
   },
   {
     "event_type": "click",
+    "session_id": "451e298e-81ea-46f3-99d2-8fd728b426fc",
     "timestamp": "2026-03-14T10:01:30.000",
     "ip_address": "52.10.20.30",
     "visitor": {
@@ -754,6 +786,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "07ec529d-9aba-40f7-b302-d764df4470a8",
     "timestamp": "2026-03-14T10:15:00.000",
     "ip_address": "62.20.30.40",
     "visitor": {
@@ -783,6 +816,7 @@
   // ========================================
   {
     "event_type": "page_view",
+    "session_id": "8ab05d70-29e4-4978-84c3-4616a373bed1",
     "timestamp": "2026-03-08T08:00:00.000",
     "ip_address": "150.60.70.80",
     "visitor": {
@@ -802,6 +836,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "8ab05d70-29e4-4978-84c3-4616a373bed1",
     "timestamp": "2026-03-09T08:15:00.000",
     "ip_address": "150.60.70.80",
     "visitor": {
@@ -821,6 +856,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "8ab05d70-29e4-4978-84c3-4616a373bed1",
     "timestamp": "2026-03-10T07:50:00.000",
     "ip_address": "150.60.70.80",
     "visitor": {
@@ -840,6 +876,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "8ab05d70-29e4-4978-84c3-4616a373bed1",
     "timestamp": "2026-03-11T08:30:00.000",
     "ip_address": "150.60.70.80",
     "visitor": {
@@ -859,6 +896,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "8ab05d70-29e4-4978-84c3-4616a373bed1",
     "timestamp": "2026-03-12T09:00:00.000",
     "ip_address": "150.60.70.80",
     "visitor": {
@@ -878,6 +916,7 @@
   },
   {
     "event_type": "click",
+    "session_id": "8ab05d70-29e4-4978-84c3-4616a373bed1",
     "timestamp": "2026-03-12T09:01:00.000",
     "ip_address": "150.60.70.80",
     "visitor": {
@@ -900,6 +939,7 @@
   // ========================================
   {
     "event_type": "page_view",
+    "session_id": "856bd3b6-9cd5-4a73-8442-534bfac7e0eb",
     "timestamp": "2026-03-13T16:00:00.000",
     "ip_address": "200.100.50.25",
     "visitor": {
@@ -924,6 +964,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "2adf66f4-2257-4834-91e3-8bea7a1c795e",
     "timestamp": "2026-03-13T16:10:00.000",
     "ip_address": "201.101.51.26",
     "visitor": {
@@ -948,6 +989,7 @@
   },
   {
     "event_type": "click",
+    "session_id": "2adf66f4-2257-4834-91e3-8bea7a1c795e",
     "timestamp": "2026-03-13T16:10:30.000",
     "ip_address": "201.101.51.26",
     "visitor": {
@@ -976,6 +1018,7 @@
   // Direct visits — guests typing URL directly
   {
     "event_type": "page_view",
+    "session_id": "fd284bec-097b-43c2-a832-92b40f57829e",
     "timestamp": "2026-03-10T06:00:00.000",
     "ip_address": "10.20.30.40",
     "visitor": {
@@ -995,6 +1038,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "77c94746-536a-4d8e-964f-d024f6902303",
     "timestamp": "2026-03-11T12:00:00.000",
     "ip_address": "20.30.40.50",
     "visitor": {
@@ -1014,6 +1058,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "f8c68a2e-0c5b-4b70-aab4-9fca3ccbead5",
     "timestamp": "2026-03-12T18:00:00.000",
     "ip_address": "30.40.50.60",
     "visitor": {
@@ -1034,6 +1079,7 @@
   // Yahoo search (uncommon referrer)
   {
     "event_type": "page_view",
+    "session_id": "ba8ab0c3-57b0-4d3d-9729-5b42377414e1",
     "timestamp": "2026-03-13T07:00:00.000",
     "ip_address": "40.50.60.70",
     "visitor": {
@@ -1059,6 +1105,7 @@
   // Reddit traffic
   {
     "event_type": "page_view",
+    "session_id": "0d4ee312-862e-44f0-b4f9-885830c8b228",
     "timestamp": "2026-03-14T02:00:00.000",
     "ip_address": "50.60.70.80",
     "visitor": {
@@ -1083,6 +1130,7 @@
   },
   {
     "event_type": "click",
+    "session_id": "0d4ee312-862e-44f0-b4f9-885830c8b228",
     "timestamp": "2026-03-14T02:01:00.000",
     "ip_address": "50.60.70.80",
     "visitor": {
@@ -1108,6 +1156,7 @@
   // WhatsApp shared link (other referrer)
   {
     "event_type": "page_view",
+    "session_id": "71075041-533c-4780-9192-117d2c0f12db",
     "timestamp": "2026-03-14T11:00:00.000",
     "ip_address": "60.70.80.90",
     "visitor": {
@@ -1133,6 +1182,7 @@
   // Logged-in user viewing their own portfolio
   {
     "event_type": "page_view",
+    "session_id": "5f5e558b-d40f-4928-9afc-e5e70f8c4072",
     "timestamp": "2026-03-14T14:00:00.000",
     "ip_address": "70.80.90.100",
     "visitor": {
@@ -1154,6 +1204,7 @@
   // International visitors
   {
     "event_type": "page_view",
+    "session_id": "bfdb77ea-d8ea-474d-9090-16eca76e2c58",
     "timestamp": "2026-03-13T03:00:00.000",
     "ip_address": "139.130.4.5",
     "visitor": {
@@ -1178,6 +1229,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "3363d3a4-54eb-480e-bcc3-e7c1763d5d3e",
     "timestamp": "2026-03-13T14:00:00.000",
     "ip_address": "196.200.50.10",
     "visitor": {
@@ -1202,6 +1254,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "972b6d15-6853-4cc1-9582-4c0987f503e6",
     "timestamp": "2026-03-14T06:00:00.000",
     "ip_address": "106.195.77.88",
     "visitor": {
@@ -1221,6 +1274,7 @@
   },
   {
     "event_type": "page_view",
+    "session_id": "86dfe47f-edef-4487-961a-19a402bcdb9f",
     "timestamp": "2026-03-14T15:30:00.000",
     "ip_address": "85.214.132.117",
     "visitor": {
