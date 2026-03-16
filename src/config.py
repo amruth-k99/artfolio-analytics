@@ -12,6 +12,13 @@ print(f"Loading environment variables from: {is_debug} {env_file}")
 load_dotenv(env_file)
 
 
+###
+#
+# Why?
+# - Type safety: Using Pydantic's BaseSettings provides type validation for configuration values, reducing the risk of runtime errors due to misconfigured settings.
+# - Environment variable support: Automatically loads settings from .env files, which can be different for development, staging, and production environments.
+
+# ###
 class Settings(BaseSettings):
     database_url: str
     secret_key: str
