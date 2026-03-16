@@ -5,8 +5,26 @@ from typing import Literal
 from src.db.base import SessionLocal
 from src.db.seed import seed_defaults
 from src.db.registry import registry
+from src.cache import cache_manager
 from src.locations.router import router as locations_router
 from src.events.router import router as events_router
+
+
+def _register_caches() -> None:
+    """
+    Register all dimension caches with tuned sizes and TTLs.
+    Called once at startup before any events are ingested.
+    """
+    cache_manager.register("ip_location",  max_size=2048, ttl_seconds=3600)
+    cache_manager.register("dates",        max_size=512)
+    cache_manager.register("device_types", max_size=256)
+    cache_manager.register("pages",        max_size=1024)
+    cache_manager.register("referrals",    max_size=512)
+    cache_manager.register("visitors",     max_size=1024)
+
+    print(
+        f"\n=== Caches registered: {cache_manager.cache_names} ===\n"
+    )
 
 
 @asynccontextmanager
@@ -28,10 +46,12 @@ async def lifespan(app: FastAPI):
     finally:
         db.close()
 
+    _register_caches()
+
     yield  # App runs here
 
     # --- Shutdown ---
-    # cleanup if needed in the future
+    cache_manager.clear_all()
 
 
 app = FastAPI(lifespan=lifespan)
@@ -54,3 +74,12 @@ async def root():
          )
 async def health_check() -> dict[Literal["status"], Literal["Healthy", "Unhealthy"]]:
     return {"status": "Healthy"}
+
+
+@app.get("/cache/stats",
+         description="View hit/miss/eviction stats for all dimension caches",
+         name="Cache Stats",
+         tags=["Diagnostics"]
+         )
+async def cache_stats() -> dict:
+    return cache_manager.stats()

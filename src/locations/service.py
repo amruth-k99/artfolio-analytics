@@ -1,14 +1,25 @@
 
-
 import httpx
 from sqlalchemy.orm import Session
 from src.locations.model import Locations
 from src.locations.schema import LocationModel, LocationFilterRequest
+from src.cache import cache_manager
 
 
 def get_location_by_ip(location_ip: str, db: Session) -> int:
+    """
+    Resolve an IP address to a location_id.
+
+    Cache layer: IP → location_id (skips HTTP + DB on repeated IPs).
+    """
+    ip_cache = cache_manager.get_cache("ip_location")
+
+    # Cache hit — skip HTTP call and DB query entirely
+    cached = ip_cache.get(location_ip)
+    if cached is not None:
+        return cached
+
     try:
-        # make async http request to make it non-blocking
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
@@ -33,39 +44,42 @@ def get_location_by_ip(location_ip: str, db: Session) -> int:
                 "country_name": location_ip
             }
 
-        location = save_location_to_db({
+        location_id = save_location_to_db({
             "city": data.get("city"),
             "state": data.get("region_name"),
             "country": data.get("country_name")
         }, db)
 
-        return location
+        # Store in cache for future lookups
+        ip_cache.put(location_ip, location_id)
+
+        return location_id
     except Exception as e:
         raise Exception(f"Error fetching location data: {str(e)}")
 
 
 def save_location_to_db(location_data: dict, db: Session) -> int:
+    """
+    Upsert a location row by (city, state, country).
+    Uses flush() instead of commit() so the caller owns the transaction.
+    """
     try:
+        existing_location = db.query(Locations).filter_by(
+            city=location_data.get("city"),
+            state=location_data.get("state"),
+            country=location_data.get("country")
+        ).first()
+
+        if existing_location:
+            return existing_location.id
 
         new_location = Locations(
             city=location_data.get("city"),
             state=location_data.get("state"),
             country=location_data.get("country")
         )
-
-        existing_location = db.query(Locations).filter_by(
-            city=new_location.city,
-            state=new_location.state,
-            country=new_location.country
-        ).first()
-
-        if existing_location:
-            print("Location already exists in the database. Skipping save.")
-            return existing_location.id
-        else:
-            db.add(new_location)
-            db.commit()
-            db.refresh(new_location)
+        db.add(new_location)
+        db.flush()
 
         return new_location.id
 

@@ -12,5 +12,5 @@ class Base(DeclarativeBase):
     pass
 
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL, echo=False) # Set to True for debugging
 SessionLocal = sessionmaker(autocommit=False, bind=engine)
