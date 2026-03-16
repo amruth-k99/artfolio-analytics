@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     database_url: str
     secret_key: str
     debug: bool = False
+    deployment_email: str
 
     class Config:
         env_file = env_file

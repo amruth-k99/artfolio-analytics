@@ -85,4 +85,4 @@ This project is licensed under the MIT License.
 
 # Powered by Artfolio.tech
 
-We are proud to say that this is our first open-source project. We are open to collaborations. If you find any issues within our current architecture, feel free to raise a PR or e-mail us at [amruth@artfolio.tech](amruth@artfolio.tech).
+We are proud to say that this is our first open-source project. We are open to collaborations. If you find any issues within our current architecture, feel free to raise a PR or e-mail us at [amruth@artfolio.tech](amruth@artfolio.tech) or [Artfolio Support](support@artfolio.tech).
