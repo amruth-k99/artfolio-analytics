@@ -71,6 +71,11 @@ For a detailed architecture diagram, visit: [Artfolio Analytics System Design](h
    uvicorn src.main:app --reload
    ```
 
+4. **Run the test suite:**
+   ```bash
+   PYTHONPATH=. pytest
+   ```
+
 # Production Setup
 
 To run the production environment, set the environment variable `DEBUG` to `False` and configure your production settings as needed.

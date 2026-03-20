@@ -2,6 +2,8 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from typing import Literal
+from fastapi.middleware.cors import CORSMiddleware
+from src.config import CONFIG
 from src.db.base import SessionLocal
 from src.db.seed import seed_defaults
 from src.db.registry import registry
@@ -55,6 +57,14 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=CONFIG.cors_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(events_router)
 app.include_router(locations_router)

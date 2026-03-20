@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     secret_key: str
     debug: bool = False
     deployment_email: str
+    cors_origins: list[str] = ["*"]
 
     class Config:
         env_file = env_file

@@ -13,8 +13,8 @@ def init_db():
     all ORM models have been imported and registered with Base.
     """
     # Import here to avoid circular imports at module level
-    from src.events.model import Events, EventTypes  # noqa: F401
-    Base.metadata.create_all(bind=engine)
+    from src.events.model import Events, EventTypes  # to avoid circular imports
+    # Base.metadata.create_all(bind=engine)  # Handled by Alembic migrations
 
 
 def get_db():

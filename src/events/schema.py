@@ -87,3 +87,8 @@ class EventModel(BaseModel):
     event_type_id: int
     properties: str | None = None
 
+
+class BatchIngestionPayload(BaseModel):
+    """Payload for batch event ingestion from the frontend analytics pipeline."""
+    events: list[EventIngestionPayload]
+
