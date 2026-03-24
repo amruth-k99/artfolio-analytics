@@ -66,6 +66,7 @@ For a detailed architecture diagram, visit: [Artfolio Analytics System Design](h
    ```
 
 3. **Run the development server:**
+
    ```bash
    export DEBUG=True
    uvicorn src.main:app --reload
