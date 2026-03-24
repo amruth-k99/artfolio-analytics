@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     debug: bool = False
     deployment_email: str
     cors_origins: list[str] = ["*"]
+    self_base_url: str = "http://localhost:8000"
 
     class Config:
         env_file = env_file

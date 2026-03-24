@@ -8,6 +8,7 @@ from src.db.base import SessionLocal
 from src.db.seed import seed_defaults
 from src.db.registry import registry
 from src.cache import cache_manager
+from src.scheduler import start_self_ping
 from src.locations.router import router as locations_router
 from src.events.router import router as events_router
 
@@ -50,9 +51,13 @@ async def lifespan(app: FastAPI):
 
     _register_caches()
 
+    # Start the keep-alive self-ping scheduler
+    ping_task = await start_self_ping()
+
     yield  # App runs here
 
     # --- Shutdown ---
+    ping_task.cancel()
     cache_manager.clear_all()
 
 
