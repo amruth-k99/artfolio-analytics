@@ -1,6 +1,6 @@
 from src.db.base import Base
 from sqlalchemy import String, DateTime, Integer, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime
 
 
@@ -33,3 +33,11 @@ class Events(Base):
     event_type_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("d_event_types.id"), nullable=False)
     properties: Mapped[str] = mapped_column(String, nullable=True)
+
+    # Relationships to dimension tables
+    device_type = relationship("DeviceTypes", lazy="joined")
+    visitor = relationship("Visitors", lazy="joined")
+    location = relationship("Locations", lazy="joined")
+    page = relationship("Page", lazy="joined")
+    referral = relationship("ReferralSources", lazy="joined")
+    event_type = relationship("EventTypes", lazy="joined")

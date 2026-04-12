@@ -72,6 +72,86 @@ class EventIngestionPayload(BaseModel):
     referral: ReferralPayload = Field(default_factory=ReferralPayload)
 
 
+# --- Response models for dimension tables ---
+
+class DateResponse(BaseModel):
+    id: int
+    date: datetime.datetime
+    minute: int
+    hour: int
+    day: int
+    day_of_week: int
+    month: int
+    quarter: int
+    year: int
+
+    class Config:
+        from_attributes = True
+
+
+class DeviceTypeResponse(BaseModel):
+    id: int
+    os: str
+    device_type: str
+    browser: str
+
+    class Config:
+        from_attributes = True
+
+
+class VisitorResponse(BaseModel):
+    id: int
+    visitor_type: str
+    user_id: str | None = None
+    device_id: str | None = None
+    signup_date: datetime.datetime | None = None
+    account_status: str
+    portfolio_created_at: datetime.datetime | None = None
+    user_type: str
+
+    class Config:
+        from_attributes = True
+
+
+class LocationResponse(BaseModel):
+    id: int
+    city: str
+    state: str
+    country: str
+
+    class Config:
+        from_attributes = True
+
+
+class PageResponse(BaseModel):
+    id: int
+    page_name: str
+    url: str
+    full_path: str
+    host: str
+
+    class Config:
+        from_attributes = True
+
+
+class ReferralResponse(BaseModel):
+    id: int
+    source: str
+    referrer_url: str | None = None
+    category: str
+
+    class Config:
+        from_attributes = True
+
+
+class EventTypeResponse(BaseModel):
+    id: int
+    name: str
+
+    class Config:
+        from_attributes = True
+
+
 # --- Existing fact table read/write model ---
 class EventModel(BaseModel):
     """Pydantic model for the f_events fact table (after dimension resolution)."""
@@ -86,6 +166,17 @@ class EventModel(BaseModel):
     page_id: int
     event_type_id: int
     properties: str | None = None
+
+    # Resolved dimension data
+    device_type: DeviceTypeResponse | None = None
+    visitor: VisitorResponse | None = None
+    location: LocationResponse | None = None
+    page: PageResponse | None = None
+    referral: ReferralResponse | None = None
+    event_type: EventTypeResponse | None = None
+
+    class Config:
+        from_attributes = True
 
 
 class BatchIngestionPayload(BaseModel):

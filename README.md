@@ -391,3 +391,9 @@ This is our first open-source project and we are open to collaborations. If you 
 
 - 📧 **amruth@artfolio.tech**
 - 📧 **support@artfolio.tech**
+
+## References
+
+- [Artfolio Analytics on Whimsical](https://whimsical.com/amruth26/artfolio-analytics-system-design-2eZGHwX3Ju32bhnfTZbXv7)
+- [Artfolio Analytics on GitHub](https://github.com/amruth-k99/artfolio-analytics)
+- [FastAPI Production Guide](https://github.com/zhanymkanov/fastapi-best-practices?tab=readme-ov-file#migrations-alembic)
