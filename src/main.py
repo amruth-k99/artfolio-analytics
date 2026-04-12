@@ -12,6 +12,7 @@ from src.cache import cache_manager
 from src.scheduler import start_self_ping
 from src.locations.router import router as locations_router
 from src.events.router import router as events_router
+from src.statistics.router import router as statistics_router
 
 
 def _register_caches() -> None:
@@ -74,6 +75,7 @@ app.add_middleware(
 
 app.include_router(events_router)
 app.include_router(locations_router)
+app.include_router(statistics_router)
 
 
 @app.get("/",
