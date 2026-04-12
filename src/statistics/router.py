@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 
 from src.db import get_db
-from src.statistics.service import get_dashboard_statistics
+from src.statistics.service import get_dashboard_statistics, get_live_events
 
 
 router = APIRouter(
@@ -25,6 +25,29 @@ async def dashboard_statistics(
         if days not in (7, 30, 90):
             days = 7
         data = get_dashboard_statistics(db, days=days)
+        return {"data": data}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get(
+    "/live-events",
+    description="Get recent events with full dimension data for the live events view",
+    name="Live Events",
+)
+async def live_events(
+    request: Request,
+    db: Session = Depends(get_db),
+) -> dict:
+    try:
+        time_range = request.query_params.get("time_range", "today")
+        search = request.query_params.get("search", "")
+        limit = int(request.query_params.get("limit", 100))
+        if limit > 500:
+            limit = 500
+        data = get_live_events(db, time_range=time_range, search=search, limit=limit)
         return {"data": data}
     except HTTPException:
         raise

@@ -503,3 +503,219 @@ def _format_pct(count: int, total: int) -> str:
     if pct < 0.5 and pct > 0:
         return "<0.5%"
     return f"{round(pct)}%"
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# Live Events
+# ═══════════════════════════════════════════════════════════════════════
+
+_TIME_RANGE_DAYS: dict[str, int] = {
+    "today": 0,       # special: start of today
+    "yesterday": 1,   # special: yesterday only
+    "7d": 7,
+    "30d": 30,
+    "3m": 90,
+    "6m": 180,
+    "12m": 365,
+}
+
+
+def _time_range_to_bounds(time_range: str) -> tuple[datetime, datetime]:
+    """Convert a frontend time-range key to (start, end) datetimes."""
+    now = datetime.utcnow()
+    today_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
+
+    if time_range == "today":
+        return today_start, now
+    elif time_range == "yesterday":
+        yesterday_start = today_start - timedelta(days=1)
+        return yesterday_start, today_start
+    else:
+        days = _TIME_RANGE_DAYS.get(time_range, 7)
+        return now - timedelta(days=days), now
+
+
+def _relative_time(event_dt: datetime) -> str:
+    """Format a datetime as a human-readable relative time string."""
+    now = datetime.utcnow()
+    delta = now - event_dt
+
+    seconds = int(delta.total_seconds())
+    if seconds < 60:
+        return f"{seconds} seconds ago"
+    minutes = seconds // 60
+    if minutes < 60:
+        return f"{minutes} minute{'s' if minutes != 1 else ''} ago"
+    hours = minutes // 60
+    if hours < 24:
+        return f"{hours} hour{'s' if hours != 1 else ''} ago"
+    days = hours // 24
+    return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def get_live_events(
+    db: Session,
+    time_range: str = "today",
+    search: str = "",
+    limit: int = 100,
+) -> dict:
+    """
+    Fetch recent events with all dimension data, shaped as the frontend
+    LiveEvent interface expects.
+    """
+    from sqlalchemy.orm import joinedload
+
+    start, end = _time_range_to_bounds(time_range)
+
+    query = (
+        db.query(Events)
+        .options(
+            joinedload(Events.device_type),
+            joinedload(Events.visitor),
+            joinedload(Events.location),
+            joinedload(Events.page),
+            joinedload(Events.referral),
+            joinedload(Events.event_type),
+        )
+        .filter(Events.datetime >= start, Events.datetime <= end)
+        .order_by(Events.datetime.desc())
+    )
+
+    # Get total count before limiting
+    total_count = (
+        db.query(func.count(Events.id))
+        .filter(Events.datetime >= start, Events.datetime <= end)
+        .scalar()
+    ) or 0
+
+    events = query.limit(limit).all()
+
+    # Transform into frontend shape
+    live_events = []
+    for event in events:
+        # Build the event name from event_type
+        event_name = f"[Auto] {_format_event_type(event.event_type.name)}" if event.event_type else "Unknown"
+
+        # Build distinct ID: prefer user_id, fall back to device_id
+        distinct_id = "(anonymous)"
+        if event.visitor:
+            if event.visitor.user_id:
+                distinct_id = event.visitor.user_id
+            elif event.visitor.device_id:
+                distinct_id = f"$device:{event.visitor.device_id[:20]}..."
+
+        # Current URL from page
+        current_url = ""
+        if event.page:
+            current_url = event.page.url
+            if len(current_url) > 40:
+                current_url = current_url[:37] + "..."
+
+        # Initial referrer
+        initial_referrer = "$direct"
+        if event.referral and event.referral.source != "direct":
+            initial_referrer = event.referral.referrer_url or event.referral.source
+
+        # OS
+        operating_system = event.device_type.os if event.device_type else "Unknown"
+
+        # URL search — not stored, so "(not set)"
+        url_search = "(not set)"
+
+        # Format time
+        time_str = event.datetime.strftime("%-I:%M:%S %p")
+
+        # Build properties list
+        properties = _build_event_properties(event)
+
+        # Apply search filter on event name, distinctId, or currentUrl
+        if search:
+            search_lower = search.lower()
+            searchable = f"{event_name} {distinct_id} {current_url} {operating_system}".lower()
+            if search_lower not in searchable:
+                continue
+
+        live_events.append({
+            "id": event.id,
+            "eventName": event_name,
+            "time": time_str,
+            "timeRelative": _relative_time(event.datetime),
+            "distinctId": distinct_id,
+            "urlSearch": url_search,
+            "operatingSystem": operating_system,
+            "currentUrl": current_url,
+            "initialReferrer": initial_referrer,
+            "properties": properties,
+        })
+
+    return {
+        "events": live_events,
+        "totalMatches": total_count,
+        "shownCount": len(live_events),
+    }
+
+
+def _format_event_type(name: str) -> str:
+    """Convert 'PAGE_VIEW' → 'Page View', 'ELEMENT_CLICK' → 'Element Click'."""
+    return name.replace("_", " ").title()
+
+
+def _build_event_properties(event: Events) -> list[dict[str, str]]:
+    """Build a list of key-value property dicts from all dimension data."""
+    import json as _json
+
+    props: list[dict[str, str]] = []
+
+    # Browser / Device info
+    if event.device_type:
+        props.append({"key": "Browser", "value": event.device_type.browser})
+        props.append({"key": "Operating System", "value": event.device_type.os})
+        props.append({"key": "Device Type", "value": event.device_type.device_type.capitalize()})
+
+    # Location info
+    if event.location:
+        props.append({"key": "City", "value": event.location.city})
+        props.append({"key": "State", "value": event.location.state})
+        props.append({"key": "Country", "value": event.location.country})
+
+    # Page info
+    if event.page:
+        props.append({"key": "Current URL", "value": event.page.url})
+        props.append({"key": "URL Path", "value": event.page.full_path})
+        props.append({"key": "Page Name", "value": event.page.page_name})
+        props.append({"key": "Current Domain", "value": event.page.host})
+
+    # Referral info
+    if event.referral:
+        props.append({"key": "Referrer Source", "value": event.referral.source})
+        if event.referral.referrer_url:
+            props.append({"key": "Referrer URL", "value": event.referral.referrer_url})
+        props.append({"key": "Referrer Category", "value": event.referral.category})
+
+    # Visitor info
+    if event.visitor:
+        if event.visitor.user_id:
+            props.append({"key": "User ID", "value": event.visitor.user_id})
+        if event.visitor.device_id:
+            props.append({"key": "Device ID", "value": event.visitor.device_id})
+        props.append({"key": "Visitor Type", "value": event.visitor.visitor_type})
+        props.append({"key": "User Type", "value": event.visitor.user_type})
+        props.append({"key": "Account Status", "value": event.visitor.account_status})
+
+    # Event metadata
+    props.append({"key": "Event Type", "value": event.event_type.name if event.event_type else "Unknown"})
+    props.append({"key": "Session ID", "value": event.session_id})
+    props.append({"key": "Time", "value": event.datetime.strftime("%-I:%M:%S.%f %p, %a, %b %-d, %Y")[:-3]})
+
+    # Custom properties (stored as JSON string)
+    if event.properties:
+        try:
+            custom = _json.loads(event.properties)
+            if isinstance(custom, dict):
+                for k, v in custom.items():
+                    props.append({"key": k, "value": str(v)})
+        except (ValueError, TypeError):
+            props.append({"key": "Properties", "value": event.properties})
+
+    return props
+
