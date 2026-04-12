@@ -1,4 +1,5 @@
 # imports MUST be in this order to avoid circular dependencies
+from sys import prefix
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from typing import Literal
@@ -61,7 +62,7 @@ async def lifespan(app: FastAPI):
     cache_manager.clear_all()
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan, root_path="/analytics")
 
 app.add_middleware(
     CORSMiddleware,
@@ -71,11 +72,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(events_router, prefix="/analytics")
-app.include_router(locations_router, prefix="/analytics")
+app.include_router(events_router)
+app.include_router(locations_router)
 
 
-@app.get("/analytics",
+@app.get("/",
          description="Welcome message for the Artfolio Analytics API",
          name="Root Endpoint"
          )
@@ -83,7 +84,7 @@ async def root():
     return {"message": "Welcome to Artfolio Analytics!"}
 
 
-@app.get("/analytics/health",
+@app.get("/health",
          description="Check the health status of the application",
          name="Health Check"
          )
@@ -91,7 +92,7 @@ async def health_check() -> dict[Literal["status"], Literal["Healthy", "Unhealth
     return {"status": "Healthy"}
 
 
-@app.get("/analytics/cache/stats",
+@app.get("/cache/stats",
          description="View hit/miss/eviction stats for all dimension caches",
          name="Cache Stats",
          tags=["Diagnostics"]
