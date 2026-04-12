@@ -1,7 +1,7 @@
 from src.db.base import Base
 from sqlalchemy import String, DateTime, Integer, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
-import datetime
+from datetime import datetime
 
 
 class EventTypes(Base):
@@ -27,7 +27,7 @@ class Events(Base):
         Integer, ForeignKey("d_pages.id"), nullable=False)
     referral_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("d_referral_sources.id"), nullable=False)
-    datetime: Mapped[datetime.datetime] = mapped_column(
+    datetime: Mapped[datetime] = mapped_column(
         DateTime, nullable=False)
     session_id: Mapped[str] = mapped_column(String, nullable=False)
     event_type_id: Mapped[int] = mapped_column(

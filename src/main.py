@@ -71,11 +71,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(events_router)
-app.include_router(locations_router)
+app.include_router(events_router, prefix="/analytics")
+app.include_router(locations_router, prefix="/analytics")
 
 
-@app.get("/",
+@app.get("/analytics",
          description="Welcome message for the Artfolio Analytics API",
          name="Root Endpoint"
          )
@@ -83,7 +83,7 @@ async def root():
     return {"message": "Welcome to Artfolio Analytics!"}
 
 
-@app.get("/health",
+@app.get("/analytics/health",
          description="Check the health status of the application",
          name="Health Check"
          )
@@ -91,7 +91,7 @@ async def health_check() -> dict[Literal["status"], Literal["Healthy", "Unhealth
     return {"status": "Healthy"}
 
 
-@app.get("/cache/stats",
+@app.get("/analytics/cache/stats",
          description="View hit/miss/eviction stats for all dimension caches",
          name="Cache Stats",
          tags=["Diagnostics"]
