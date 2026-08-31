@@ -17,4 +17,8 @@ async def test_root_endpoint(async_client: AsyncClient):
 async def test_get_events_empty(async_client: AsyncClient):
     response = await async_client.get("/v1/events/")
     assert response.status_code == 200
-    assert response.json() == []
+    # The endpoint returns a paginated envelope, not a bare list. This asserted
+    # `== []` and had been failing against the real response shape.
+    body = response.json()
+    assert body["data"]["events"] == []
+    assert body["data"]["pagination"]["total"] == 0

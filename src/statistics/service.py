@@ -6,7 +6,7 @@ dimension tables and returns data shaped exactly as the frontend expects.
 """
 
 from datetime import datetime, timedelta
-from sqlalchemy import func, distinct, case, literal
+from sqlalchemy import func, distinct, case, literal, select
 from sqlalchemy.orm import Session
 
 from src.events.model import Events, EventTypes
@@ -127,6 +127,33 @@ def _period_bounds(days: int) -> tuple[datetime, datetime, datetime]:
     return current_start, previous_start, now
 
 
+def _window(
+    start: datetime,
+    end: datetime,
+    page_name: str | None = None,
+    inclusive_end: bool = True,
+) -> list:
+    """
+    The WHERE conditions shared by every statistics query.
+
+    `page_name` narrows the result to a single portfolio. d_pages.page_name is
+    the first path segment of the URL (the portfolio username), so filtering on
+    it scopes to that portfolio and any sub-path under it. Passing None keeps
+    the site-wide behaviour the admin dashboard relies on.
+    """
+    end_condition = Events.datetime <= end if inclusive_end else Events.datetime < end
+    conditions = [Events.datetime >= start, end_condition]
+
+    if page_name:
+        conditions.append(
+            Events.page_id.in_(
+                select(Page.id).where(Page.page_name == page_name)
+            )
+        )
+
+    return conditions
+
+
 # ═══════════════════════════════════════════════════════════════════════
 # Public API — called by the router
 # ═══════════════════════════════════════════════════════════════════════
@@ -156,6 +183,63 @@ def get_dashboard_statistics(db: Session, days: int = 7) -> dict:
         "devices": devices,
         "browsers": browsers,
         "operating_systems": operating_systems,
+    }
+
+
+def get_portfolio_statistics(
+    db: Session, page_name: str, days: int = 7
+) -> dict:
+    """
+    The same measurements as the dashboard, scoped to a single portfolio.
+
+    This exists because the portfolio owner's own analytics page had no source
+    of truth for visitor counts: it was served `visits * 0.6` from a different
+    service and labelled "Distinct users". Every number here is measured -
+    `unique_visitors` is COUNT(DISTINCT visitor_id) over that portfolio's
+    events, and countries come from the location resolved at ingestion.
+    """
+    current_start, previous_start, now = _period_bounds(days)
+
+    unique_visitors = (
+        db.query(func.count(distinct(Events.visitor_id)))
+        .filter(*_window(current_start, now, page_name))
+        .scalar()
+    ) or 0
+
+    previous_visitors = (
+        db.query(func.count(distinct(Events.visitor_id)))
+        .filter(
+            *_window(previous_start, current_start, page_name, inclusive_end=False)
+        )
+        .scalar()
+    ) or 0
+
+    page_view_type_id = (
+        db.query(EventTypes.id).filter(EventTypes.name == "PAGE_VIEW").scalar()
+    )
+    page_views = 0
+    if page_view_type_id is not None:
+        page_views = (
+            db.query(func.count(Events.id))
+            .filter(
+                *_window(current_start, now, page_name),
+                Events.event_type_id == page_view_type_id,
+            )
+            .scalar()
+        ) or 0
+
+    change, change_type = _pct_change(unique_visitors, previous_visitors)
+
+    return {
+        "page_name": page_name,
+        "days": days,
+        "unique_visitors": unique_visitors,
+        "page_views": page_views,
+        "visitors_change": change,
+        "visitors_change_type": change_type,
+        "chart_data": _compute_chart_data(db, current_start, now, page_name),
+        "referrers": _compute_referrers(db, current_start, now, page_name=page_name),
+        "countries": _compute_countries(db, current_start, now, page_name=page_name),
     }
 
 
@@ -284,7 +368,7 @@ def _bounce_rate(db: Session, start: datetime, end: datetime) -> float:
 
 
 def _compute_chart_data(
-    db: Session, start: datetime, end: datetime
+    db: Session, start: datetime, end: datetime, page_name: str | None = None
 ) -> list[dict]:
     """Daily visitors and page views for the chart."""
     page_view_type_id = (
@@ -302,7 +386,7 @@ def _compute_chart_data(
 
         visitors = (
             db.query(func.count(distinct(Events.visitor_id)))
-            .filter(Events.datetime >= day_start, Events.datetime <= day_end)
+            .filter(*_window(day_start, day_end, page_name))
             .scalar()
         ) or 0
 
@@ -311,8 +395,7 @@ def _compute_chart_data(
             page_views = (
                 db.query(func.count(Events.id))
                 .filter(
-                    Events.datetime >= day_start,
-                    Events.datetime <= day_end,
+                    *_window(day_start, day_end, page_name),
                     Events.event_type_id == page_view_type_id,
                 )
                 .scalar()
@@ -348,7 +431,11 @@ def _compute_top_pages(
 
 
 def _compute_referrers(
-    db: Session, start: datetime, end: datetime, limit: int = 10
+    db: Session,
+    start: datetime,
+    end: datetime,
+    limit: int = 10,
+    page_name: str | None = None,
 ) -> list[dict]:
     """Top referral sources by unique visitors."""
     rows = (
@@ -357,7 +444,7 @@ def _compute_referrers(
             func.count(distinct(Events.visitor_id)).label("visitors"),
         )
         .join(Events, Events.referral_id == ReferralSources.id)
-        .filter(Events.datetime >= start, Events.datetime <= end)
+        .filter(*_window(start, end, page_name))
         .group_by(ReferralSources.source)
         .order_by(func.count(distinct(Events.visitor_id)).desc())
         .limit(limit)
@@ -374,12 +461,16 @@ def _compute_referrers(
 
 
 def _compute_countries(
-    db: Session, start: datetime, end: datetime, limit: int = 10
+    db: Session,
+    start: datetime,
+    end: datetime,
+    limit: int = 10,
+    page_name: str | None = None,
 ) -> list[dict]:
     """Country breakdown as percentages of unique visitors."""
     total_visitors = (
         db.query(func.count(distinct(Events.visitor_id)))
-        .filter(Events.datetime >= start, Events.datetime <= end)
+        .filter(*_window(start, end, page_name))
         .scalar()
     ) or 1  # avoid division by zero
 
@@ -389,7 +480,7 @@ def _compute_countries(
             func.count(distinct(Events.visitor_id)).label("visitors"),
         )
         .join(Events, Events.location_id == Locations.id)
-        .filter(Events.datetime >= start, Events.datetime <= end)
+        .filter(*_window(start, end, page_name))
         .group_by(Locations.country)
         .order_by(func.count(distinct(Events.visitor_id)).desc())
         .limit(limit)
